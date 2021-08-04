@@ -1,0 +1,201 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Database.gd" type="Script" id=1]
+[ext_resource path="res://Geography/Blocks/Block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Tool.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Items/Tools/ToolItem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Items/Tools/Tool_Prototypes.png" type="Texture" id=5]
+[ext_resource path="res://Items/Blocks/BlockItem.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Items/Item.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/Tools/ToolInvPlaceholder.png" type="Texture" id=8]
+[ext_resource path="res://Items/Blocks/BlockInvPlaceholder.png" type="Texture" id=9]
+[ext_resource path="res://Geography/Blocks/Objects/Object.tscn" type="PackedScene" id=10]
+
+[node name="Database" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Blocks" type="Node" parent="."]
+
+[node name="Grass_Prototype" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Grass"
+blockType = "Soil"
+toolNeeded = "Shovel"
+gives = "Grass"
+
+[node name="Grass_Autotile" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Grass"
+blockType = "Soil"
+toolNeeded = "Shovel"
+gives = "Grass"
+
+[node name="Dirt_Prototype" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Dirt"
+blockType = "Soil"
+toolNeeded = "Shovel"
+gives = "Dirt"
+
+[node name="Dirt_Autotile" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Dirt"
+blockType = "Soil"
+toolNeeded = "Shovel"
+gives = "Dirt"
+
+[node name="Stone_Prototype" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Stone"
+blockType = "Stone"
+toolNeeded = "Pick"
+gives = "Stone"
+
+[node name="Stone_Autotile" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Stone"
+blockType = "Stone"
+toolNeeded = "Pick"
+gives = "Stone"
+
+[node name="Water_Prototype" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Water"
+blockType = "Water"
+toolNeeded = "Bottle"
+
+[node name="Water_Autotile" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Water"
+blockType = "Water"
+toolNeeded = "Bottle"
+
+[node name="Fern" parent="Blocks" instance=ExtResource( 10 )]
+displayName = "Fern"
+blockType = "Object"
+toolNeeded = "Hand"
+inspection = "A small leafy fern with fronds made up of tiny leaves"
+
+[node name="Wood_Box" parent="Blocks" instance=ExtResource( 10 )]
+displayName = "Wood Box"
+blockType = "Object"
+toolNeeded = "Hand"
+inspection = "A simple box made of boards."
+
+[node name="Stone_Ramp" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Stone Ramp"
+isRamp = true
+rotates = true
+blockType = "Stone"
+toolNeeded = "Pick"
+gives = "Stone"
+
+[node name="Dirt_Ramp" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Dirt Ramp"
+isRamp = true
+rotates = true
+blockType = "Soil"
+toolNeeded = "Shovel"
+gives = "Dirt"
+
+[node name="Grass_Ramp" parent="Blocks" instance=ExtResource( 2 )]
+displayName = "Grass Ramp"
+isRamp = true
+rotates = true
+blockType = "Soil"
+toolNeeded = "Shovel"
+gives = "Grass"
+
+[node name="Tools" type="Node" parent="."]
+
+[node name="Hand" parent="Tools" instance=ExtResource( 3 )]
+verb = "Gather"
+
+[node name="Shovel" parent="Tools" instance=ExtResource( 3 )]
+verb = "Dig"
+
+[node name="Pick" parent="Tools" instance=ExtResource( 3 )]
+verb = "Mine"
+
+[node name="Axe" parent="Tools" instance=ExtResource( 3 )]
+verb = "Chop"
+
+[node name="Bottle" parent="Tools" instance=ExtResource( 3 )]
+verb = "Fill"
+
+[node name="Rod" parent="Tools" instance=ExtResource( 3 )]
+verb = "Cast"
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Shovel_Prototype" parent="Items" instance=ExtResource( 4 )]
+displayName = "Prototype Shovel"
+toolType = "Shovel"
+
+[node name="ToolSprite" parent="Items/Shovel_Prototype" index="0"]
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="InvSprite" parent="Items/Shovel_Prototype" index="1"]
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Pick_Prototype" parent="Items" instance=ExtResource( 4 )]
+displayName = "Prototype Pick"
+toolType = "Pick"
+
+[node name="ToolSprite" parent="Items/Pick_Prototype" index="0"]
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 64, 0, 32, 32 )
+
+[node name="InvSprite" parent="Items/Pick_Prototype" index="1"]
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Axe_Prototype" parent="Items" instance=ExtResource( 4 )]
+displayName = "Prototype Axe"
+toolType = "Axe"
+
+[node name="ToolSprite" parent="Items/Axe_Prototype" index="0"]
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 96, 0, 32, 32 )
+
+[node name="InvSprite" parent="Items/Axe_Prototype" index="1"]
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Grass" parent="Items" instance=ExtResource( 6 )]
+displayName = "Grass"
+blockType = "Terrain"
+placeables = [ "Grass_Autotile", "Grass_Ramp" ]
+
+[node name="InvSprite" parent="Items/Grass" index="0"]
+texture = ExtResource( 9 )
+
+[node name="Dirt" parent="Items" instance=ExtResource( 6 )]
+displayName = "Dirt"
+blockType = "Terrain"
+placeables = [ "Dirt_Autotile", "Dirt_Ramp" ]
+
+[node name="InvSprite" parent="Items/Dirt" index="0"]
+texture = ExtResource( 9 )
+
+[node name="Stone" parent="Items" instance=ExtResource( 6 )]
+displayName = "Stone"
+blockType = "Terrain"
+placeables = [ "Stone_Autotile", "Stone_Ramp" ]
+
+[node name="InvSprite" parent="Items/Stone" index="0"]
+texture = ExtResource( 9 )
+
+[node name="GenericTestItem" parent="Items" instance=ExtResource( 7 )]
+
+[editable path="Items/Shovel_Prototype"]
+
+[editable path="Items/Pick_Prototype"]
+
+[editable path="Items/Axe_Prototype"]
+
+[editable path="Items/Grass"]
+
+[editable path="Items/Dirt"]
+
+[editable path="Items/Stone"]

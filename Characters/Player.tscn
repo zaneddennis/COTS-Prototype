@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Characters/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Characters/Player.gd" type="Script" id=2]
+[ext_resource path="res://Items/Inventory.tscn" type="PackedScene" id=3]
+
+[node name="Player" instance=ExtResource( 1 )]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
+rotating = true
+current = true
+
+[node name="Inventory" parent="." index="5" instance=ExtResource( 3 )]
+data = {
+"Dirt": 8,
+"Shovel_Prototype": 1
+}
+dimensions = Vector2( 11, 3 )
+[connection signal="timeout" from="ProgressBar/InteractTimer" to="." method="_on_InteractTimer_timeout"]
